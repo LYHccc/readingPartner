@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ReadingPartner</string>
+    <string name="button_send">请点击</string>
+    <string name="default_message">点击下边的按钮</string>
+    <string name="interact_message">你点击了按钮</string>
+</resources>
