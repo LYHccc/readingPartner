@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //解决改变图片后缀导致的检验错误问题，取消对图片的检验
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
 }
 
 dependencies {

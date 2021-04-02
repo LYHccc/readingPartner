@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ReadingPartner</string>
-    <string name="button_send">请点击</string>
-    <string name="default_message">点击下边的按钮</string>
-    <string name="interact_message">你点击了按钮</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="username_hint">请输入用户名</string>
+    <string name="password_hint">请输入密码</string>
 </resources>
