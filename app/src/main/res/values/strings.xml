@@ -4,4 +4,7 @@
     <string name="register">注册</string>
     <string name="username_hint">请输入用户名</string>
     <string name="password_hint">请输入密码</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
