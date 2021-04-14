@@ -1,14 +1,13 @@
 package com.example.dell.readingpartner;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import com.example.dell.readingpartner.activity.BaseActivity;
 import com.example.dell.readingpartner.activity.LoginActivity;
 import com.example.dell.readingpartner.activity.RegisterActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private Button btnLogin;
     private Button btnRegister;
@@ -22,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent login = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(login);
+                navigateTo(LoginActivity.class);
             }
         });
 
@@ -31,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent register = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(register);
+                navigateTo(RegisterActivity.class);
             }
         });
     }

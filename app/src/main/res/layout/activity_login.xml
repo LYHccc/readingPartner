@@ -39,6 +39,7 @@
                         android:layout_height="30dp"
                         android:src="@mipmap/account" />
                 <EditText
+                        android:id="@+id/et_account"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -67,6 +68,7 @@
                         android:layout_height="30dp"
                         android:src="@mipmap/pwd" />
                 <EditText
+                        android:id="@+id/et_pwd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -80,7 +82,7 @@
         </LinearLayout>
 
         <Button
-                android:id="@+id/login"
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="25dp"
