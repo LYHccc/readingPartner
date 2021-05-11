@@ -1,6 +1,5 @@
 package com.example.dell.readingpartner.activity;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,14 +18,19 @@ public class RegisterActivity extends BaseActivity {
     private Button btnRegister;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+    protected int initLayout() {
+        return R.layout.activity_register;
+    }
 
+    @Override
+    protected void initView() {
         etAccount = findViewById(R.id.et_account);
         etPwd = findViewById(R.id.et_pwd);
         btnRegister = findViewById(R.id.btn_register);
+    }
 
+    @Override
+    protected void initData() {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

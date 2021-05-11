@@ -10,7 +10,7 @@
         android:orientation="vertical"
         tools:context="com.example.dell.readingpartner.activity.HomeActivity">
 
-    <android.support.v4.view.ViewPager
+    <com.example.dell.readingpartner.view.FixedViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"

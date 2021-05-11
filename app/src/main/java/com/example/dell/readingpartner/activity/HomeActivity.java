@@ -1,10 +1,8 @@
 package com.example.dell.readingpartner.activity;
 
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import com.example.dell.readingpartner.R;
 import com.example.dell.readingpartner.adapter.MyPagerAdapter;
 import com.example.dell.readingpartner.entity.TabEntity;
@@ -17,7 +15,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener, DiscussFragment.OnFragmentInteractionListener, MyFragment.OnFragmentInteractionListener{
+public class HomeActivity extends BaseActivity implements HomeFragment.OnFragmentInteractionListener, DiscussFragment.OnFragmentInteractionListener, MyFragment.OnFragmentInteractionListener{
 
     private String[] mTitles = {"首页", "讨论", "我的"};
     private int[] mIconUnselectIds = {
@@ -31,13 +29,20 @@ public class HomeActivity extends AppCompatActivity implements HomeFragment.OnFr
     private ViewPager viewPager;
     private CommonTabLayout commonTabLayout;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
 
+    @Override
+    protected int initLayout() {
+        return R.layout.activity_home;
+    }
+
+    @Override
+    protected void initView() {
         viewPager = findViewById(R.id.viewpager);
         commonTabLayout = findViewById(R.id.commonTabLayout);
+    }
+
+    @Override
+    protected void initData() {
         mFragments.add(HomeFragment.newInstance());
         mFragments.add(DiscussFragment.newInstance());
         mFragments.add(MyFragment.newInstance());
