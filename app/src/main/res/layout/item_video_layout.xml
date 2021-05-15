@@ -52,39 +52,39 @@
 
         </LinearLayout>
 
-        <!--        <RelativeLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="187dp"-->
-        <!--            android:layout_marginTop="8dp">-->
-
-        <!--            <ImageView-->
-        <!--                android:id="@+id/img_cover"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="match_parent"-->
-        <!--                android:scaleType="fitXY"-->
-        <!--                android:src="@mipmap/default_bg" />-->
-
-        <!--        </RelativeLayout>-->
-
-        <FrameLayout
-            android:id="@+id/player_container"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="187dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/black"
-            app:layout_constraintDimensionRatio="16:9"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="8dp">
 
-            <VideoView
-                    android:id="@+id/prepare_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/img_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@mipmap/default_bg" />
+
+        </RelativeLayout>
+
+        <!--<FrameLayout-->
+            <!--android:id="@+id/player_container"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="187dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:background="@android:color/black"-->
+            <!--app:layout_constraintDimensionRatio="16:9"-->
+            <!--app:layout_constraintTop_toTopOf="parent">-->
+
+            <!--&lt;!&ndash;<VideoView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/prepare_view"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"/>&ndash;&gt;-->
             <!--<com.dueeeke.videocontroller.component.PrepareView-->
                 <!--android:id="@+id/prepare_view"-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="match_parent" />-->
 
-        </FrameLayout>
+        <!--</FrameLayout>-->
 
         <RelativeLayout
             android:layout_width="match_parent"

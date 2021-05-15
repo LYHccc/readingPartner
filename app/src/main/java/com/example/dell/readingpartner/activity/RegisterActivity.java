@@ -8,7 +8,9 @@ import com.example.dell.readingpartner.R;
 import com.example.dell.readingpartner.api.Api;
 import com.example.dell.readingpartner.api.ApiConfig;
 import com.example.dell.readingpartner.api.TtitCallback;
+import com.example.dell.readingpartner.entity.LoginResponse;
 import com.example.dell.readingpartner.util.StringUtil;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 
@@ -57,12 +59,13 @@ public class RegisterActivity extends BaseActivity {
 
             @Override
             public void onSuccess(final String res) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        showToast(res);
-                    }
-                });
+                Gson gson = new Gson();
+                LoginResponse loginResponse = gson.fromJson(res, LoginResponse.class);
+                if (loginResponse.getCode() == 0) {
+                    showToastSync("注册成功");
+                } else {
+                    showToastSync("注册失败:" + loginResponse.getMsg());
+                }
             }
 
             @Override

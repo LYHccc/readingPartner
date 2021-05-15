@@ -3,58 +3,76 @@ package com.example.dell.readingpartner.entity;
 import java.io.Serializable;
 
 public class VideoEntity implements Serializable {
-    private int id;
-    private String title;
-    private String name;
-    private int dzCount;
-    private int collectCount;
-    private int commentCount;
+    private int vid;
+    private String vtitle;
+    private String author;
+    private String coverurl;
+    private String headurl;
+    private int commentNum;
+    private int likeNum;
+    private int collectNum;
 
-    public int getId() {
-        return id;
+    public int getVid() {
+        return vid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setVid(int vid) {
+        this.vid = vid;
     }
 
-    public String getTitle() {
-        return title;
+    public String getVtitle() {
+        return vtitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setVtitle(String vtitle) {
+        this.vtitle = vtitle;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public int getDzCount() {
-        return dzCount;
+    public String getCoverurl() {
+        return coverurl;
     }
 
-    public void setDzCount(int dzCount) {
-        this.dzCount = dzCount;
+    public void setCoverurl(String coverurl) {
+        this.coverurl = coverurl;
     }
 
-    public int getCollectCount() {
-        return collectCount;
+    public String getHeadurl() {
+        return headurl;
     }
 
-    public void setCollectCount(int collecctCount) {
-        this.collectCount = collecctCount;
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
     }
 
-    public int getCommentCount() {
-        return commentCount;
+    public int getCommentNum() {
+        return commentNum;
     }
 
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public int getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(int likeNum) {
+        this.likeNum = likeNum;
+    }
+
+    public int getCollectNum() {
+        return collectNum;
+    }
+
+    public void setCollectNum(int collectNum) {
+        this.collectNum = collectNum;
     }
 }

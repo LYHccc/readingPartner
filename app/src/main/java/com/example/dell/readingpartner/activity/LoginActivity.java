@@ -60,25 +60,15 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onSuccess(final String res) {
                 Log.e("onSuccess", res);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        showToast(res);
-//                    }
-//                });
-                showToastSync(res);
                 Gson gson = new Gson();
                 LoginResponse loginResponse = gson.fromJson(res, LoginResponse.class);
                 if (loginResponse.getCode() == 0) {
                     String token = loginResponse.getToken();
-//                    SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
-//                    SharedPreferences.Editor  editor = sp.edit();
-//                    editor.putString("token", token);
-//                    editor.commit();
                     saveStringToSp("token", token);
+                    navigateTo(HomeActivity.class);
                     showToastSync("登录成功");
                 } else {
-                    showToastSync("登录失败");
+                    showToastSync("登录失败:" + loginResponse.getMsg());
                 }
             }
 
@@ -101,7 +91,7 @@ public class LoginActivity extends BaseActivity {
 //                        , jsonStr);
 //        //第三步创建Rquest
 //        Request request = new Request.Builder()
-//                .url(AppConfig.BASE_URl + "/app/login")
+//                .url(ApiConfig.BASE_URl + "/app/login")
 //                .addHeader("contentType", "application/json;charset=UTF-8")
 //                .post(requestBodyJson)
 //                .build();
