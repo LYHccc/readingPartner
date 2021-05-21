@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.dueeeke.videoplayer.player.VideoViewManager;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -17,6 +19,7 @@ import static android.content.Context.MODE_PRIVATE;
 public abstract class BaseFragment extends Fragment {
 
     protected View mRootView;
+    private Unbinder unbinder;
 
     @Nullable
     @Override
@@ -25,6 +28,8 @@ public abstract class BaseFragment extends Fragment {
             mRootView = inflater.inflate(initLayout(), container, false);
             initView();
         }
+        //将fragment和butterKnife进行绑定
+        unbinder = ButterKnife.bind(this, mRootView);
         return mRootView;
     }
 
@@ -32,6 +37,15 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initData();
+    }
+
+    /**
+     * 释放绑定
+     */
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     protected abstract int initLayout();

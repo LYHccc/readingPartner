@@ -28,7 +28,7 @@ public class Api {
         return api;
     }
 
-    // Post登录注册请求
+    // Post请求
     public void postRequest(final TtitCallback callback) {
         JSONObject jsonObject = new JSONObject(mParams);
         String jsonStr = jsonObject.toString();
@@ -59,7 +59,7 @@ public class Api {
         });
     }
 
-    // Get获取视频列表请求
+    // Get请求
     public void getRequest(final TtitCallback callback) {
         String url = getAppendUrl(requestUrl, mParams);
         Request request = new Request.Builder()
@@ -82,7 +82,7 @@ public class Api {
         });
     }
 
-    // 拼接token到请求的url后边
+    // 拼接参数到请求的url后边
     private String getAppendUrl(String url, HashMap<String,Object> map) {
         if (map != null && !map.isEmpty()) {
             StringBuffer buffer = new StringBuffer();

@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.dueeeke.videocontroller.StandardVideoController;
@@ -207,12 +208,13 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
     }
 
     private void getVideoList(){
-        String token = getStringFromSp("token");
+        //String token = getStringFromSp("token");
         HashMap<String, Object> params = new HashMap<>();
-        params.put("token", token);
+        //params.put("token", token);
         Api.config(ApiConfig.VIDEO_LIST, params).getRequest(new TtitCallback() {
             @Override
             public void onSuccess(String res) {
+                Log.e("结果", res);
                 VideoListResponse response = new Gson().fromJson(res, VideoListResponse.class);
                 if (response != null && response.getCode() == 0) {
                     datas = response.getPage().getList();

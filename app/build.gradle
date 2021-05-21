@@ -45,4 +45,8 @@ dependencies {
 //    compile 'com.github.dueeeke.dkplayer:player-ijk:3.2.6'
 //    compile 'com.github.dueeeke.dkplayer:videocache:3.2.6'
 
+    compile group: 'com.jakewharton', name: 'butterknife', version: '8.8.1'
+    compile group: 'com.jakewharton', name: 'butterknife-compiler', version: '8.8.1'
+
+
 }
