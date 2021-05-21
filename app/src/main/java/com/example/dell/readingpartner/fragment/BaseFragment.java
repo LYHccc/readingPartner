@@ -69,19 +69,32 @@ public abstract class BaseFragment extends Fragment {
         startActivity(in);
     }
 
-    protected void saveStringToSp(String key, String val) {
+    protected void insertValue(String key, String val) {
         SharedPreferences sp = getActivity().getSharedPreferences("sp_ttit", MODE_PRIVATE);
         SharedPreferences.Editor  editor = sp.edit();
         editor.putString(key, val);
         editor.commit();
     }
 
-    protected String getStringFromSp(String key) {
+    protected String findByKey(String key) {
         SharedPreferences sp = getActivity().getSharedPreferences("sp_ttit", MODE_PRIVATE);
         return sp.getString(key, "");
     }
 
+    protected void removeByKey(String key) {
+        SharedPreferences sp = getActivity().getSharedPreferences("sp_ttit", MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.remove(key);
+        edit.apply();
+    }
+
     protected VideoViewManager getVideoViewManager() {
         return VideoViewManager.instance();
+    }
+
+    public void navigateToWithFlag(Class cls, int flags) {
+        Intent in = new Intent(getActivity(), cls);
+        in.setFlags(flags);
+        startActivity(in);
     }
 }

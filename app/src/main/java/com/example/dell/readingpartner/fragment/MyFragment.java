@@ -1,5 +1,6 @@
 package com.example.dell.readingpartner.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +8,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import com.example.dell.readingpartner.R;
+import com.example.dell.readingpartner.activity.LoginActivity;
 import com.example.dell.readingpartner.activity.MyCollectActivity;
 
 
@@ -57,6 +59,8 @@ public class MyFragment extends BaseFragment {
             case R.id.rl_skin:
                 break;
             case R.id.rl_logout:
+                removeByKey("token");
+                navigateToWithFlag(LoginActivity.class, Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 break;
         }
     }

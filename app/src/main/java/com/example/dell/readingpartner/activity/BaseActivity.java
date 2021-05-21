@@ -43,14 +43,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(in);
     }
 
-    protected void saveStringToSp(String key, String val) {
+    protected void insertValue(String key, String val) {
         SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
         SharedPreferences.Editor  editor = sp.edit();
         editor.putString(key, val);
         editor.apply();
     }
 
+    protected String findByKey(String key) {
+        SharedPreferences sp = getSharedPreferences("sp_ttit", MODE_PRIVATE);
+        return sp.getString(key, "");
+    }
+
     protected VideoViewManager getVideoViewManager() {
         return VideoViewManager.instance();
+    }
+    public void navigateToWithFlag(Class cls, int flags) {
+        Intent in = new Intent(mContext, cls);
+        in.setFlags(flags);
+        startActivity(in);
     }
 }

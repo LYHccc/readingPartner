@@ -12,6 +12,7 @@ import com.dueeeke.videocontroller.StandardVideoController;
 import com.dueeeke.videocontroller.component.*;
 import com.dueeeke.videoplayer.player.VideoView;
 import com.example.dell.readingpartner.R;
+import com.example.dell.readingpartner.activity.LoginActivity;
 import com.example.dell.readingpartner.adapter.VideoAdapter;
 import com.example.dell.readingpartner.api.Api;
 import com.example.dell.readingpartner.api.ApiConfig;
@@ -205,15 +206,23 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
     }
 
     private void getVideoList(){
+        String token = findByKey("token");
+        System.out.println("token" + token);
         HashMap<String, Object> params = new HashMap<>();
-        Api.config(ApiConfig.VIDEO_LIST, params).getRequest(new TtitCallback() {
+        params.put("token", token);
+        Api.config(ApiConfig.VIDEO_LIST, params).postRequest(new TtitCallback() {
             @Override
             public void onSuccess(String res) {
                 Log.e("结果", res);
                 VideoListResponse response = new Gson().fromJson(res, VideoListResponse.class);
                 if (response != null && response.getCode() == 0) {
-                    datas = response.getPage().getList();
-                    videoAdapter.setDatas(datas);
+                    if (response.getPage() == null) {
+                        navigateTo(LoginActivity.class);
+                        showToastSync("登录失败");
+                    } else {
+                        datas = response.getPage().getList();
+                        videoAdapter.setDatas(datas);
+                    }
                 }
             }
 
