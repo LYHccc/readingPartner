@@ -63,7 +63,6 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         if (videoEntity.getVideoSocialEntity() != null) {
             int likeNum = videoEntity.getVideoSocialEntity().getLikeNum();
-            int commentNum = videoEntity.getVideoSocialEntity().getCommentNum();
             int collectNum = videoEntity.getVideoSocialEntity().getCollectNum();
             boolean flagLike = videoEntity.getVideoSocialEntity().isFlagLike();
             boolean flagCollect = videoEntity.getVideoSocialEntity().isFlagCollect();
@@ -78,7 +77,6 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             }
 
             vh.tvDz.setText(String.valueOf(likeNum));
-            vh.tvComment.setText(String.valueOf(commentNum));
             vh.tvCollect.setText(String.valueOf(collectNum));
             vh.flagLike = flagLike;
             vh.flagCollect = flagCollect;
@@ -100,7 +98,6 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private TextView tvTitle;
         private TextView tvAuthor;
         private TextView tvDz;
-        private TextView tvComment;
         private TextView tvCollect;
         private ImageView imgHeader;
         private ImageView imgCollect;
@@ -117,7 +114,6 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvTitle = view.findViewById(R.id.title);
             tvAuthor = view.findViewById(R.id.author);
             tvDz = view.findViewById(R.id.dz);
-            tvComment = view.findViewById(R.id.comment);
             tvCollect = view.findViewById(R.id.collect);
             imgHeader = view.findViewById(R.id.img_header);
             imgCollect = view.findViewById(R.id.img_collect);

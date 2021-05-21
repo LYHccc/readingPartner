@@ -11,18 +11,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="21dp"
-        android:paddingTop="13dp"
+        android:paddingTop="15dp"
         android:paddingRight="21dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="62dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/img_header"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
                 android:src="@mipmap/header" />
 
             <RelativeLayout
@@ -37,7 +37,7 @@
                     android:layout_alignParentTop="true"
                     android:text="韭菜盒子新做法，不发面不烫面"
                     android:textColor="#242424"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/author"
@@ -46,7 +46,7 @@
                     android:layout_alignParentBottom="true"
                     android:text="大胃王"
                     android:textColor="#9f9f9f"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -69,7 +69,7 @@
         <FrameLayout
             android:id="@+id/player_container"
             android:layout_width="match_parent"
-            android:layout_height="187dp"
+            android:layout_height="240dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/black"
             app:layout_constraintDimensionRatio="16:9"
@@ -84,7 +84,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="39dp">
+            android:layout_marginTop="10dp"
+            android:layout_height="45dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -92,35 +93,19 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/img_comment"
-                    android:layout_width="19dp"
-                    android:layout_height="19dp"
-                    android:src="@mipmap/comment" />
-
-                <TextView
-                    android:id="@+id/comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:text="0"
-                    android:textColor="#161616"
-                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/img_collect"
-                    android:layout_width="19dp"
-                    android:layout_height="19dp"
-                    android:src="@mipmap/collect" />
+                        android:id="@+id/img_collect"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@mipmap/collect"/>
 
                 <TextView
                     android:id="@+id/collect"
@@ -129,7 +114,7 @@
                     android:layout_marginLeft="3dp"
                     android:text="0"
                     android:textColor="#161616"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
@@ -142,8 +127,8 @@
 
                 <ImageView
                     android:id="@+id/img_like"
-                    android:layout_width="19dp"
-                    android:layout_height="19dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:src="@mipmap/dianzan" />
 
                 <TextView
@@ -153,7 +138,7 @@
                     android:layout_marginLeft="3dp"
                     android:text="0"
                     android:textColor="#161616"
-                    android:textSize="14sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

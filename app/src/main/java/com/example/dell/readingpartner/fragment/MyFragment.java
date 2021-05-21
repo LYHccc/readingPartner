@@ -48,15 +48,13 @@ public class MyFragment extends BaseFragment {
         }
     }
 
-    @OnClick({R.id.img_header, R.id.rl_collect, R.id.rl_skin, R.id.rl_logout})
+    @OnClick({R.id.img_header, R.id.rl_collect, R.id.rl_logout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.img_header:
                 break;
             case R.id.rl_collect:
                 navigateTo(MyCollectActivity.class);
-                break;
-            case R.id.rl_skin:
                 break;
             case R.id.rl_logout:
                 removeByKey("token");
