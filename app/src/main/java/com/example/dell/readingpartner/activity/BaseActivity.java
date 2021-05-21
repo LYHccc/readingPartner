@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import com.dueeeke.videoplayer.player.VideoViewManager;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public Context mContext;
@@ -47,5 +48,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         SharedPreferences.Editor  editor = sp.edit();
         editor.putString(key, val);
         editor.apply();
+    }
+
+    protected VideoViewManager getVideoViewManager() {
+        return VideoViewManager.instance();
     }
 }

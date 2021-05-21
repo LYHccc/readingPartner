@@ -60,9 +60,6 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         VideoEntity videoEntity = datas.get(position);
         vh.tvTitle.setText(videoEntity.getVtitle());
         vh.tvAuthor.setText(videoEntity.getAuthor());
-//        vh.tvDz.setText(String.valueOf(videoEntity.getLikeNum()));
-//        vh.tvComment.setText(String.valueOf(videoEntity.getCommentNum()));
-//        vh.tvCollect.setText(String.valueOf(videoEntity.getCollectNum()));
 
         if (videoEntity.getVideoSocialEntity() != null) {
             int likeNum = videoEntity.getVideoSocialEntity().getLikeNum();

@@ -1,23 +1,21 @@
-package com.example.dell.readingpartner.fragment;
+package com.example.dell.readingpartner.activity;
 
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.dueeeke.videocontroller.StandardVideoController;
 import com.dueeeke.videocontroller.component.*;
 import com.dueeeke.videoplayer.player.VideoView;
 import com.example.dell.readingpartner.R;
-import com.example.dell.readingpartner.adapter.VideoAdapter;
+import com.example.dell.readingpartner.adapter.MyCollectAdapter;
 import com.example.dell.readingpartner.api.Api;
 import com.example.dell.readingpartner.api.ApiConfig;
 import com.example.dell.readingpartner.api.TtitCallback;
+import com.example.dell.readingpartner.entity.MyCollectResponse;
 import com.example.dell.readingpartner.entity.VideoEntity;
-import com.example.dell.readingpartner.entity.VideoListResponse;
 import com.example.dell.readingpartner.listener.OnItemChildClickListener;
 import com.example.dell.readingpartner.util.Tag;
 import com.example.dell.readingpartner.util.Utils;
@@ -27,12 +25,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomeFragment extends BaseFragment implements OnItemChildClickListener {
-
+public class MyCollectActivity extends BaseActivity implements OnItemChildClickListener {
     private RecyclerView recyclerView;
     private List<VideoEntity> datas = new ArrayList<>();
     //视频列表适配器
-    private VideoAdapter videoAdapter;
+    private MyCollectAdapter videoAdapter;
     //布局管理器
     private LinearLayoutManager linearLayoutManager;
 
@@ -51,34 +48,24 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
      */
     protected int mLastPos = mCurPos;
 
-    private OnFragmentInteractionListener mListener;
-
-    public HomeFragment() {
-    }
-
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
-    }
-
     @Override
     protected int initLayout() {
-        return R.layout.fragment_home;
+        return R.layout.activity_mycollect;
     }
 
     @Override
     protected void initView() {
         initVideoView();
-        recyclerView = mRootView.findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
     }
 
     @Override
     protected void initData() {
         getVideoList();
-        linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        videoAdapter = new VideoAdapter(getActivity());
+        videoAdapter = new MyCollectAdapter(this);
         videoAdapter.setOnItemChildClickListener(this);
         recyclerView.setAdapter(videoAdapter);
         recyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
@@ -99,7 +86,7 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
     }
 
     protected void initVideoView() {
-        mVideoView = new VideoView(getActivity());
+        mVideoView = new VideoView(this);
         mVideoView.setOnStateChangeListener(new com.dueeeke.videoplayer.player.VideoView.SimpleOnStateChangeListener() {
             @Override
             public void onPlayStateChanged(int playState) {
@@ -111,15 +98,15 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
                 }
             }
         });
-        mController = new StandardVideoController(getActivity());
-        mErrorView = new ErrorView(getActivity());
+        mController = new StandardVideoController(this);
+        mErrorView = new ErrorView(this);
         mController.addControlComponent(mErrorView);
-        mCompleteView = new CompleteView(getActivity());
+        mCompleteView = new CompleteView(this);
         mController.addControlComponent(mCompleteView);
-        mTitleView = new TitleView(getActivity());
+        mTitleView = new TitleView(this);
         mController.addControlComponent(mTitleView);
-        mController.addControlComponent(new VodControlView(getActivity()));
-        mController.addControlComponent(new GestureView(getActivity()));
+        mController.addControlComponent(new VodControlView(this));
+        mController.addControlComponent(new GestureView(this));
         mController.setEnableOrientation(true);
         mVideoView.setVideoController(mController);
     }
@@ -181,7 +168,7 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
         mTitleView.setTitle(videoEntity.getVtitle());
         View itemView = linearLayoutManager.findViewByPosition(position);
         if (itemView == null) return;
-        VideoAdapter.ViewHolder viewHolder = (VideoAdapter.ViewHolder) itemView.getTag();
+        MyCollectAdapter.ViewHolder viewHolder = (MyCollectAdapter.ViewHolder) itemView.getTag();
         //把列表中预置的PrepareView添加到控制器中，注意isPrivate此处只能为true。
         mController.addControlComponent(viewHolder.mPrepareView, true);
         Utils.removeViewFormParent(mVideoView);
@@ -198,21 +185,20 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
         if (mVideoView.isFullScreen()) {
             mVideoView.stopFullScreen();
         }
-        if (getActivity().getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        if (this.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         mCurPos = -1;
     }
 
     private void getVideoList(){
         HashMap<String, Object> params = new HashMap<>();
-        Api.config(ApiConfig.VIDEO_LIST, params).getRequest(new TtitCallback() {
+        Api.config(ApiConfig.VIDEO_MYCOLLECT, params).getRequest(new TtitCallback() {
             @Override
             public void onSuccess(String res) {
-                Log.e("结果", res);
-                VideoListResponse response = new Gson().fromJson(res, VideoListResponse.class);
+                MyCollectResponse response = new Gson().fromJson(res, MyCollectResponse.class);
                 if (response != null && response.getCode() == 0) {
-                    datas = response.getPage().getList();
+                    datas = response.getList();
                     videoAdapter.setDatas(datas);
                 }
             }
@@ -222,16 +208,5 @@ public class HomeFragment extends BaseFragment implements OnItemChildClickListen
 
             }
         });
-    }
-
-
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }

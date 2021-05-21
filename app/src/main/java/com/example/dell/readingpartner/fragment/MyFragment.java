@@ -7,6 +7,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import com.example.dell.readingpartner.R;
+import com.example.dell.readingpartner.activity.MyCollectActivity;
 
 
 public class MyFragment extends BaseFragment {
@@ -51,6 +52,7 @@ public class MyFragment extends BaseFragment {
             case R.id.img_header:
                 break;
             case R.id.rl_collect:
+                navigateTo(MyCollectActivity.class);
                 break;
             case R.id.rl_skin:
                 break;
