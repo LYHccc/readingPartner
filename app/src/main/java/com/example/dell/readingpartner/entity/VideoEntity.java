@@ -11,6 +11,7 @@ public class VideoEntity implements Serializable {
     private int commentNum;
     private int likeNum;
     private int collectNum;
+    private String playurl;
 
     public int getVid() {
         return vid;
@@ -74,5 +75,13 @@ public class VideoEntity implements Serializable {
 
     public void setCollectNum(int collectNum) {
         this.collectNum = collectNum;
+    }
+
+    public String getPlayurl() {
+        return playurl;
+    }
+
+    public void setPlayurl(String playurl) {
+        this.playurl = playurl;
     }
 }
