@@ -3,8 +3,10 @@ package com.example.dell.readingpartner;
 import android.view.View;
 import android.widget.Button;
 import com.example.dell.readingpartner.activity.BaseActivity;
+import com.example.dell.readingpartner.activity.HomeActivity;
 import com.example.dell.readingpartner.activity.LoginActivity;
 import com.example.dell.readingpartner.activity.RegisterActivity;
+import com.example.dell.readingpartner.util.StringUtil;
 
 public class MainActivity extends BaseActivity {
 
@@ -24,6 +26,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        if (!StringUtil.isEmpty(findByKey("token"))) {
+            navigateTo(HomeActivity.class);
+            finish();
+        }
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
